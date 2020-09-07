@@ -1,0 +1,15 @@
+{
+  "name": "more-fxmaster",
+  "title": "More FXMaster",
+  "description": "",
+  "authors": [{"name":"kyle Spiller","email":"me@kylespiller.com" }],
+  "version": "0.0.1",
+  "minimumCoreVersion": "0.6.6",
+  "compatibleCoreVersion":"0.6.6",
+  "esmodules": [
+    "scripts/more-fxmaster.js",
+    "scripts/filters_FXGodrayFilter.js"
+  ],
+  "url":"https://vtt.duck.horse",
+  "manifest":"https://raw.githubusercontent.com/KyleFS/foundryvtt-macro_on_activate/master/module.json"
+}
