@@ -2,36 +2,27 @@ export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
   constructor(options) {
     super();
     this.enabled = false;
-    this.skipFading = false;
-    this.angle = 30;
-    this.gain = 0.5;
-    this.lacunarity = 2.2;
+    this.angle = options.hasOwnProperty("angle") ? options.angle : 30;
+    this.gain = options.hasOwnProperty("gain") ? options.gain :0.35;
+    this.lacunarity = options.hasOwnProperty("lacunarity") ? options.lacunarity :2.55;
+    this.time = options.hasOwnProperty("time") ? options.time : 0;
+    this.parallel = options.hasOwnProperty("parallel") ? options.parallel : true;
+    this.center = [0, 0];
     this.play();
   }
 
   static get label() {
-    return "Bloom";
+    return "Godray";
   }
 
   play() {
     this.enabled = true;
-    if (this.skipFading) {
-      this.skipFading = false;
-      this.threshold = 0.0;
-      return;
-    }
-    let anim = {
-      ease: Linear.easeNone,
-      repeat: 0,
-      threshold: 0.0,
-    };
-    this.transition = TweenMax.to(this, 4, anim);
+    this.seed = Math.random();
   }
 
   step() {
-    this._step++;
-    if (this._step % 5) return;
-    this.blur = 10 + 5 * this._bloomRange[(this._step / 5) % 10];
+    this.seed += 1;
+    this.time = canvas.app.ticker.lastTime / 1000;
   }
 
   configure(opts) {
@@ -46,23 +37,8 @@ export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
   // So we can destroy object afterwards
   stop() {
     return new Promise((resolve, reject) => {
-      if (this.skipFading) {
-        this.skipFading = false;
-        this.enabled = false;
-        this.threshold = 1.0;
-        resolve();
-        return;
-      }
-      let anim = {
-        ease: Linear.easeNone,
-        repeat: 0,
-        threshold: 1.0,
-        onComplete: () => {
-          this.enabled = false;
-          resolve();
-        }
-      };
-      this.transition = TweenMax.to(this, 4, anim);
+      this.enabled = false;
+      resolve();
     });
   }
 }
