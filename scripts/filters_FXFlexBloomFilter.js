@@ -1,6 +1,11 @@
 export class FXFlexBloomFilter extends PIXI.filters.AdvancedBloomFilter {
   constructor(options) {
     super();
+
+    if( typeof options == "undefined" ){
+      options = {};
+    }
+
     this.enabled = false;
     this.skipFading = options.hasOwnProperty("skipFading") ? options.skipFading : false;
     this.threshold = options.hasOwnProperty("threshold") ? options.threshold : 1.0;

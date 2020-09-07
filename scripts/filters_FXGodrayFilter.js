@@ -1,6 +1,11 @@
 export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
   constructor(options) {
     super();
+
+    if( typeof options == "undefined" ){
+      options = {};
+    }
+
     this.enabled = false;
     this.angle = options.hasOwnProperty("angle") ? options.angle : 30;
     this.gain = options.hasOwnProperty("gain") ? options.gain :0.35;
