@@ -3,12 +3,13 @@
   "title": "More FXMaster",
   "description": "",
   "authors": [{"name":"kyle Spiller","email":"me@kylespiller.com" }],
-  "version": "0.0.5",
+  "version": "0.0.6",
   "minimumCoreVersion": "0.6.6",
   "compatibleCoreVersion":"0.6.6",
   "esmodules": [
     "scripts/more-fxmaster.js",
     "scripts/filters_FXGodrayFilter.js",
+    "scripts/filters_FXNoiseFilter.js",
     "scripts/filters_FXFlexBloomFilter.js"
   ],
   "url":"https://github.com/KyleFS/foundryvtt-more-fxmaster",

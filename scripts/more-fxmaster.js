@@ -2,6 +2,7 @@ import { filterManager } from "../../fxmaster/filters/FilterManager.js";
 
 import { FXGodrayFilter } from "./filters_FXGodrayFilter.js";
 import { FXFlexBloomFilter } from "./filters_FXFlexBloomFilter.js";
+import { FXNoiseFilter } from "./filters_FXNoiseFilter.js";
 
 Hooks.on("init", () => {
     // Adding filters and effects
@@ -9,6 +10,7 @@ Hooks.on("init", () => {
         filters: {
             godray: FXGodrayFilter,
             flexbloom: FXFlexBloomFilter,
+            noise: FXNoiseFilter,
         }
     });
 });
