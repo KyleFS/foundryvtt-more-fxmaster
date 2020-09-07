@@ -10,6 +10,6 @@
     "scripts/more-fxmaster.js",
     "scripts/filters_FXGodrayFilter.js"
   ],
-  "url":"https://vtt.duck.horse",
-  "manifest":"https://raw.githubusercontent.com/KyleFS/foundryvtt-macro_on_activate/master/module.json"
+  "url":"https://github.com/KyleFS/foundryvtt-more-fxmaster",
+  "manifest":"https://raw.githubusercontent.com/KyleFS/foundryvtt-more-fxmaster/master/module.json"
 }
