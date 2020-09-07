@@ -10,8 +10,9 @@ export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
     this.angle = options.hasOwnProperty("angle") ? options.angle : 30;
     this.gain = options.hasOwnProperty("gain") ? options.gain :0.35;
     this.lacunarity = options.hasOwnProperty("lacunarity") ? options.lacunarity :2.55;
-    this.time = options.hasOwnProperty("time") ? options.time : 0;
-    this.parallel = options.hasOwnProperty("parallel") ? options.parallel : true;
+    this.time = 0;
+    this.speed = options.hasOwnProperty("speed") ? options.speed : 100;
+    this.parallel = true;
     this.center = [0, 0];
     this.play();
   }
@@ -22,12 +23,10 @@ export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
 
   play() {
     this.enabled = true;
-    this.seed = Math.random();
   }
 
   step() {
-    this.seed += 1;
-    this.time = canvas.app.ticker.lastTime / 1000;
+    this.time = canvas.app.ticker.lastTime / this.speed;
   }
 
   configure(opts) {
