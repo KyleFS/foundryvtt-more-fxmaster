@@ -2,7 +2,7 @@ export class FXNoiseFilter extends PIXI.filters.OldFilmFilter {
   constructor(options) {
     super();
 
-    if( typeof options == "undefined" ){
+    if( typeof options === "undefined" ){
       options = {};
     }
 

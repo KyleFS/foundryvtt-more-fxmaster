@@ -22,11 +22,33 @@ export class FXGodrayFilter extends PIXI.filters.GodrayFilter {
   }
 
   play() {
+    this.clearTokenFilter();
+
     this.enabled = true;
   }
 
   step() {
+    this.clearTokenFilter();
+
     this.time = canvas.app.ticker.lastTime / this.speed;
+  }
+
+  clearTokenFilter() {
+    if(typeof canvas.tokens.filters == "undefined" || canvas.tokens.filters == null){
+      return;
+    }
+
+    let tokenFilters = canvas.tokens.filters, outputFilters = canvas.tokens.filters;
+
+    for(let i = 0; i < tokenFilters.length; i++){
+      if( !(tokenFilters[i] instanceof FXGodrayFilter) ){
+        continue;
+      }
+
+      outputFilters.splice(i, 1);
+    }
+
+    canvas.tokens.filters = outputFilters;
   }
 
   configure(opts) {

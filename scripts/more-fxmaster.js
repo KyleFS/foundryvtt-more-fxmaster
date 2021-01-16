@@ -1,4 +1,6 @@
 import { filterManager } from "../../fxmaster/filters/FilterManager.js";
+import { FXCanvasAnimation } from "../../fxmaster/module/canvasanimation.js"
+import { easeFunctions } from "../../fxmaster/module/ease.js";
 
 import { FXGodrayFilter } from "./filters_FXGodrayFilter.js";
 import { FXFlexBloomFilter } from "./filters_FXFlexBloomFilter.js";
@@ -24,3 +26,39 @@ Hooks.on("mfxReset", () => {
     canvas.scene.unsetFlag("fxmaster", "effects");
     canvas.scene.unsetFlag("fxmaster", "filters");
 });
+
+
+
+class overLayer extends PlaceablesLayer {
+    constructor() {
+        super();
+        this.effects = {};
+        this.weather = null;
+        this.specials = [];
+    }
+
+    static get layerOptions() {
+        return mergeObject(super.layerOptions, {
+            canDragCreate: false,
+            zIndex: 190
+        });
+    }
+
+    activate() {
+        // Skipping Placeable Layers activate method
+        // super.activate();
+        CanvasLayer.prototype.activate.apply(this)
+        return this
+    }
+
+    deactivate() {
+        // Skipping Placeable Layers deactivate method
+        // super.deactivate();
+        CanvasLayer.prototype.deactivate.apply(this)
+        return this
+    }
+
+    async draw() {
+        super.draw();
+    }
+}
